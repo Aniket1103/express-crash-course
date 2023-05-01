@@ -9,14 +9,7 @@ app.get("/", (req, res) => {
     res.render("index", {text : "World"});
 })
 
-app.get("/users", (req, res) => {
-    console.log('This is User list');
-    res.send("User List");
-})
-
-app.get("/users/new", (req, res) => {
-    console.log("User new form")
-    res.send("New user form")
-})
+const userRouter = require("./routes/users");
+app.use("/users", userRouter);
 
 app.listen(3000);
