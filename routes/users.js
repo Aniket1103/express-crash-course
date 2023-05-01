@@ -6,15 +6,26 @@ router.get("/", (req, res) => {
     res.send("User List");
 })
 
-const users = [{ name : "John" }, { name : "abc" }]
+router.post("/", (req, res) => {
+    res.send("Create User");
+})
 
 router.get("/new", (req, res) => {
     console.log("User new form")
     res.send("New user form")
 })
 
-router.get("/:id", (req, res) => {
-    res.send(`User with id : ${ req.params.id }, with name : ${ users[req.params.id].name }`);
-})
+router
+    .route("/:id")
+    .get((req, res) => {
+        res.send(`Get user with id : ${ req.params.id }`);
+    })
+    .put((req, res) => {
+        res.send(`User with id : ${ req.params.id }`);
+    })
+    .delete((req, res) => {
+        res.send(`Delete user with id : ${ req.params.id }`);
+    })
+
 
 module.exports = router;
