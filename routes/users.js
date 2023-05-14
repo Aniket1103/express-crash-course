@@ -9,12 +9,20 @@ router.get("/", logger, (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    res.send("Create User");
+    let isValid = true;
+    if(isValid){
+        users.push({ firstName : req.body.firstName })
+        res.redirect(`/users/${users.length - 1}`);
+    }
+    else {
+        console.log("error");
+        res.render("users/new.ejs", { firstName : req.body.firstName });
+    }
 })
 
 router.get("/new", (req, res) => {
     console.log("User new form")
-    res.send("New user form")
+    res.render("users/new.ejs", { firstName : "DefaultValue" });
 })
 
 router
