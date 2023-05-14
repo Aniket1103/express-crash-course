@@ -4,7 +4,8 @@ const router = express.Router();
 // router.use(logger);
 
 router.get("/", logger, (req, res) => {
-    console.log('This is User list');
+    //req.query object contains all the query parameters passed in the URL
+    console.log('This is User list', req.query.name );
     res.send("User List");
 })
 
