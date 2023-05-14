@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.use(logger);
+// router.use(logger);
 
-router.get("/", (req, res) => {
+router.get("/", logger, (req, res) => {
     console.log('This is User list');
     res.send("User List");
 })
